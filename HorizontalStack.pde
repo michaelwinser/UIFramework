@@ -8,13 +8,29 @@ class HorizontalStack extends UIElement {
   }
 
   void layout() {
-    // evenly distribute children across the vertical space
+    // distribute children across the vertical space
 
     if (children.size() > 0) {
-      int childWidth = w / children.size();
+      // Get the size of the children that have an opinion
+      int remainingWidth = w;
+      int remainingChildren = children.size();
+
+      for (UIElement child : children) {
+        if (child.layoutWidth != 0) {
+          remainingWidth -= child.layoutWidth;
+          remainingChildren--;
+        }
+      }
+
+      int defaultWidth = 0;
+      if (remainingWidth > 0 && remainingChildren > 0) {
+        defaultWidth = remainingWidth / remainingChildren;
+      }
 
       int childX = 0;
       for (UIElement child : children) {
+        int childWidth = child.layoutWidth != 0 ? child.layoutWidth : defaultWidth;
+
         child.x = childX; 
         child.y = 0;
         child.w = childWidth;
