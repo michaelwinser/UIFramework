@@ -4,6 +4,12 @@ class UIElement {
   int id;
   boolean overlay;
 
+  // Layout properties
+  int layoutX;
+  int layoutY;
+  int layoutWidth;
+  int layoutHeight;
+
   ArrayList<UIElement> children;
 
   UIElement() {
@@ -33,8 +39,9 @@ class UIElement {
 
     pushMatrix();
     translate(x, y);
-    clip(0, 0, w, h);
+    clipStack.push(0, 0, w, h);
     draw();
+    clipStack.pop();
     frameworkDrawChildren(level);
     if (overlay) {
       drawOverlay();
@@ -46,6 +53,9 @@ class UIElement {
     fill(0, 0, 0, 64);
     rectMode(CORNER);
     rect(0, 0, w, h);
+    stroke(0);
+    line(0, 0, w, h);
+    line(0, h, w, 0);
   }
 
   void frameworkDrawChildren(int level) {
@@ -78,6 +88,7 @@ class UIElement {
         return child.frameworkHitTest(x - child.x, y - child.y);
       }
     }
+    
     return this;
   }
 

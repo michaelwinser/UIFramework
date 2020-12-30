@@ -2,6 +2,7 @@ UIElement root;
 Static floater;
 int windowId;
 UIElement mouseFocus;
+ClipManager clipStack = new ClipManager();
 
 int getNextWindowId() {
   return ++windowId;
@@ -41,6 +42,7 @@ void mouseMoved() {
     mouseFocus.overlay = false;
   }
   
+  println("focus " + nf(mouseFocus != null ? mouseFocus.id : 0) + " -> " + nf(newFocus.id));
   mouseFocus = newFocus;
   mouseFocus.overlay = true;
 }

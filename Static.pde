@@ -2,6 +2,7 @@ class Static extends UIElement {
 
   String text;
   PImage image;
+  color borderColour = color(0);
   color c = color(255);
   
   int size = 20;
@@ -42,14 +43,14 @@ class Static extends UIElement {
   void draw() {
 
     fill(c);
-    
+    stroke(borderColour);
     rectMode(CORNER);
     rect(0, 0, w, h);
     
     if (this.image != null) {
       imageMode(CORNER);
-      //image(this.image, 0, 0, w, h);
-      image(this.image, 0, 0);
+      image(this.image, 0, 0, w, h);
+      //image(this.image, 0, 0);
     }
 
     if (this.text != null) {
