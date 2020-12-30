@@ -10,6 +10,9 @@ class VerticalStack extends UIElement {
   void layout() {
     // evenly distribute children across the vertical space
 
+    println("Vertical.layout: " + nf(w) + " x " + nf(h));
+
+
     if (children.size() > 0) {
       int childHeight = h / children.size();
 
