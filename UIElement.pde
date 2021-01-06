@@ -1,14 +1,18 @@
+enum BorderPosition { North, South, East, West, Center }
 class UIElement {
   int x, y;
   int w, h;
   int id;
-  boolean overlay;
+  boolean overlay; // HACK
+  
 
   // Layout properties
   int layoutX;
   int layoutY;
   int layoutWidth;
   int layoutHeight;
+
+  BorderPosition borderPosition;
 
   ArrayList<UIElement> children;
 
@@ -92,7 +96,8 @@ class UIElement {
     return this;
   }
 
-  void addChild(UIElement e) {
+  UIElement addChild(UIElement e) {
     children.add(e);
+    return e;
   }
 }
