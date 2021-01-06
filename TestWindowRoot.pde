@@ -13,13 +13,16 @@ class TestWindowRoot extends UIElement {
     
     UIElement leftPanel = new VerticalStack();
     leftPanel.borderPosition = BorderPosition.West;
+    leftPanel.layoutWidth = min(200, w / 4);
     
     UIElement rightPanel = new VerticalStack();
     rightPanel.borderPosition = BorderPosition.East;
+    rightPanel.layoutWidth = min(200, w / 4);
     
     Static centerPanel = new Static("Center"); 
     centerPanel.setColour(color(255, 0, 0));
     centerPanel.layoutWidth = 500;
+    centerPanel.borderPosition = BorderPosition.Center;
 
     myLayout.addChild(statusBar);
     myLayout.addChild(leftPanel);

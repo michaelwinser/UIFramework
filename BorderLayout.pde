@@ -39,7 +39,7 @@ class BorderLayout extends UIElement {
 
     // For now we assume that border elements have an appropriate layoutWidth or layoutHeight
 
-    int verticalOffset = 0;
+    int verticalOffset = 0; //<>//
     int horizontalOffset = 0;
     int verticalSpace = h;
     int horizontalSpace = w;
@@ -70,6 +70,7 @@ class BorderLayout extends UIElement {
 
       horizontalSpace -= east.w;
     }
+    
     if (west != null) {
       west.x = 0;
       west.y = verticalOffset;
